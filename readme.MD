@@ -9,11 +9,11 @@ Con el codigo se puede:
 6. Eliminar SMS
 
 Cosas que considero agregar pero aun no hago:
--Informacion de velocidad internet
--Control e informacion tarjeta SD
--Control e informacion señal movil
--Control e informacion wifi completo (aun no quiero usar ese wifi...)
--Control e informacion 4gusb extendido
+1. Informacion de velocidad internet
+2. Control e informacion tarjeta SD
+3. -Control e informacion señal movil
+4. Control e informacion wifi completo (aun no quiero usar ese wifi...)
+5. Control e informacion 4gusb extendido
 
 
 Probe el codigo con python3.
@@ -21,10 +21,12 @@ Probe el codigo con python3.
 
 En mi caso era un usb de la compañia Movistar y no tenia una marca o modelo donde encontrar informacion de el.
 La informacion que encontre del disposivo:
--Modelo hardware (en interfaz web):
--Modelo software (en interfaz web):
--Chips en dispositivo:
---... MICRO FM25LS01 ...
+<ol>
+<li>Modelo hardware (en interfaz web):</li>
+<li>Modelo software (en interfaz web):</li>
+</ol>
+Chips en dispositivo:
+... MICRO FM25LS01 ...
 --ZXIC ZX297520V3 0109 FAPDS ...
 --RTL8189ES KBU20H1 ...
 --ZXIC ZX234220A1 P1 0107HT ...
