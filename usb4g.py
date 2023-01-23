@@ -4,9 +4,9 @@ from time import gmtime, strftime
 login_pass="YWRtaW4=" #Esa es la contraseña por defecto "admin", tiene que enviarse codificada en Base64
 HOST = "192.168.0.1"
 URL = "http://"+HOST
-REFERER=URL+"/index.html"
 URL_SET=URL+"/goform/goform_set_cmd_process"
 URL_GET=URL+"/goform/goform_get_cmd_process"
+REFERER=URL+"/index.html"
 HEADERS={'Referer': REFERER}
 
 def login(): #Asegura que tengamos acceso admin a la web de configuraciones
@@ -30,10 +30,8 @@ def mobile_handle(bool): #(True|False) Enciende o apaga la coneccion a internet 
     try:
         if login():
             if bool:
-                doing="Encender"
                 data = { 'isTest':'false', 'notCallback':'true', 'goformId':'CONNECT_NETWORK'}
             else:
-                doing="Apagar"
                 data = { 'isTest':'false', 'notCallback':'true', 'goformId':'DISCONNECT_NETWORK'}
             response = requests.post(URL_SET, data=data, headers=HEADERS)
             response_dict = json.loads(response.content.decode('utf-8'))
@@ -49,10 +47,8 @@ def wifi_handle(bool): #(True|False) Enciende o apaga la coneccion a Wifi
     try:
         if login():
             if bool:
-                doing="Encender"
                 data = { 'goformId':'SET_WIFI_INFO', 'isTest':'false', 'm_ssid_enable':'1', 'wifiEnabled':'1' }
             else:
-                doing="Apagar"
                 data = { 'goformId':'SET_WIFI_INFO', 'isTest':'false', 'm_ssid_enable':'0', 'wifiEnabled':'0' }
             response = requests.post(URL_SET, data=data, headers=HEADERS)
             response_dict = json.loads(response.content.decode('utf-8'))
@@ -114,7 +110,7 @@ def delete_sms(ids): #('29;33;55;')elimina uno o varios sms, el id debe estar ac
             response = requests.post(URL_SET, data=data, headers=HEADERS)
             response_dict = json.loads(response.content.decode('utf-8'))
             if response_dict['result'] =='success':
-                print("Delete Success: "+doing)
+                print("Delete Success")
             else:
                 print("Delete Fail: "+response_dict)
         else:
