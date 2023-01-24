@@ -1,4 +1,4 @@
-Este codigo lo use para controlar algunas caracteristicas de mi modem Sim 3g/4g usb wifi.
+Este codigo lo use para controlar algunas caracteristicas de mi usb Sim 3g/4g wifi modem.
 
 Con el codigo se puede:
 1. Encender y apagar coneccion movil
