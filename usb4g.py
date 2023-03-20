@@ -1,6 +1,6 @@
 """
 MIT License
-Copyright (c) 2023 Gaspar URibe
+Copyright (c) 2023 Gaspar Uribe
 https://gasparuribe.cl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -89,7 +89,7 @@ def get_sms(): #Muestra todos los mensajes en el disposivo
         if login():
             data = {'isTest':'false', 'cmd':'sms_data_total', 'page':'0', 'data_per_page':'500', 'mem_store':'1', 'tags':'10', 'order_by':'order+by+id+desc'}
             response = requests.get(URL_GET, params=data, headers=HEADERS)
-            response_dict = json.loads(response.content.decode('utf-8'))
+            response_dict = json.loads(response.content.decode('utf-8'), strict=False)
             for sms in response_dict["messages"]:
                 sms['content_to_txt'] = bytes.fromhex(sms['content']).decode('utf-8').replace("\x00", "")
             return response_dict["messages"]
@@ -147,7 +147,10 @@ if __name__ == "__main__": #Para probar el codigo desde terminal/comandos
     #wifi_handle(False)
     print(get_sms_capacity())
     print()
-    print(get_sms())
+    the_sms=get_sms()
+    for sms in the_sms:
+        print("From: "+sms['number'] + " Date:"+sms['date'] + " ID:"+sms['id'] )
+        print(sms['content_to_txt'])
     #send_sms('+56995330765','Hola estoy probando tu codigo gracias')
     #delete_sms('88;')
     print("End BYE")
